@@ -7,7 +7,7 @@ Created on Sat Nov 12 15:43:32 2022
 import cv2
 import os
     
-def get_videos(directory):
+def get_video_files(directory):
     videos = []
     for filename in os.listdir(directory):
         videos.append(filename)
@@ -15,7 +15,7 @@ def get_videos(directory):
         
     return videos
 
-def extract_images_from_video(video, train_folder='train', test_folder='test', delay=10, name="file", max_images=5, silent=False):    
+def extract_images_from_video(video, train_folder='ImageData/train', test_folder='ImageData/test', delay=10, name="file", max_images=5, silent=False):    
     vidcap = cv2.VideoCapture(video)
     count = 0
     num_images = 0
