@@ -24,11 +24,11 @@ def extract_images_from_video(video, train_folder='ImageData/train', test_folder
     fps = int(vidcap.get(cv2.CAP_PROP_FPS))
     
     while(success):
-        if num_images < 3:
+        if num_images < 2:
             success, image = vidcap.read()
             num_images += 1
             label += 1
-            file_name = name + "_" + str(label) + ".jpg"
+            file_name = name + "_" + str(label) + ".png"
             path = os.path.join(train_folder, file_name)
             cv2.imwrite(path, image)
             
@@ -40,11 +40,11 @@ def extract_images_from_video(video, train_folder='ImageData/train', test_folder
             
             count += delay*fps
             vidcap.set(1, count)
-        elif num_images == 3:
+        elif num_images == 2:
             success, image = vidcap.read()
             num_images += 1
             label += 1
-            file_name = name + "_" + str(label) + ".jpg"
+            file_name = name + "_" + str(label) + ".png"
             path = os.path.join(test_folder, file_name)
             cv2.imwrite(path, image)
             
