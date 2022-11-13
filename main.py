@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 12 16:40:55 2022
-
-@author: Yu Chen
-"""
-
 from utils import get_video_files, extract_images_from_video, create_dataset, plot_image
 from models import cnn
 from loss import FocalLoss, reweight

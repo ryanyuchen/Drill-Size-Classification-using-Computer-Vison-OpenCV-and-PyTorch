@@ -1,9 +1,3 @@
-"""
-Created on Sat Nov 12 15:43:32 2022
-
-@author: vanch
-"""
-
 import cv2
 import os
 import numpy as np
