@@ -6,11 +6,13 @@ Created on Sat Nov 12 15:43:32 2022
 
 import cv2
 import os
+import numpy as np
+import matplotlib.pyplot as plt
     
 def get_video_files(directory):
     videos = []
-    for filename in os.listdir(directory):
-        videos.append(filename)
+    for file in os.listdir(directory):
+        videos.append(file)
         #print(filename)
         
     return videos
@@ -59,3 +61,32 @@ def extract_images_from_video(video, train_folder='ImageData/train', test_folder
         else:
             success = False
         
+
+def create_dataset(directory, h, w):
+    img_data = []
+    class_name = []
+    
+    for file in os.listdir(directory):
+        img_path = os.path.join(directory, file)
+        image = cv2.imread(img_path, cv2.COLOR_BGR2RGB)
+        #image = cv2.imread(img_path, cv2.COLOR_BGR2GRAY)
+        image = cv2.resize(image, (h, w), interpolation = cv2.INTER_AREA)
+        image = np.array(image)
+        image = image.astype('float32')
+        image /= 255
+        img_data.append(image)
+        class_name.append(file[0:5])
+        
+        return img_data, class_name
+    
+def plot_image(image):
+    f, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, sharey=True)
+    f.set_figwidth(15)
+    ax1.imshow(image)
+    
+    # RGB channels
+    # CHANNELID : 0 for Red, 1 for Green, 2 for Blue. 
+    ax2.imshow(image[:, : , 0]) #Red
+    ax3.imshow(image[:, : , 1]) #Green
+    ax4.imshow(image[:, : , 2]) #Blue
+    f.suptitle('Different Channels of Image')
