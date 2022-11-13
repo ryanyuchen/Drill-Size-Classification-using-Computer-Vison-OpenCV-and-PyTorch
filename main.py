@@ -22,6 +22,7 @@ def main():
     # create train and testing dataset
     path_train = "ImageData/train"
     images_train, y_train = create_dataset(path_train, 32, 32)
+    #plot_image(images_train[0])
     path_test = "ImageData/test"
     images_test, y_test = create_dataset(path_test, 32, 32)
     
@@ -47,7 +48,7 @@ def main():
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=False)
     
-    # use cnn 
+    # define model, optimizer and criterion 
     model = cnn()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=reg)
     # use cross-entropy
@@ -57,6 +58,7 @@ def main():
     criterion = FocalLoss(weight=per_cls_weights, gamma=1)
     '''
     
+    # run ML for epochs and output the bes accuracy
     best = 0.0
     for epoch in range(epochs):
 

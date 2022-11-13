@@ -4,12 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
     
 def get_video_files(directory):
-    videos = []
+    files = []
     for file in os.listdir(directory):
-        videos.append(file)
-        #print(filename)
+        files.append(file)
         
-    return videos
+    return files
 
 def extract_images_from_video(video, train_folder='ImageData/train', test_folder='ImageData/test', delay=10, name="file", max_images=5, silent=False):    
     vidcap = cv2.VideoCapture(video)
