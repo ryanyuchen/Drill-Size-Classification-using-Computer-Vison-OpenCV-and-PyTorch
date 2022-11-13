@@ -51,7 +51,7 @@ def main():
     model = cnn()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=reg)
     # use cross-entropy
-    critierion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss()
     '''
     # use Focal Loss
     criterion = FocalLoss(weight=per_cls_weights, gamma=1)
@@ -74,7 +74,6 @@ def main():
     
     
 class CreateDataset(Dataset):
-
     def __init__(self, images, labels):
         # Add a transform here
         self.images = images
