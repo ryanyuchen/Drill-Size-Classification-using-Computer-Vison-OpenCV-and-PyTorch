@@ -1,14 +1,10 @@
 import torch
 import torch.nn as nn
 
-class MyModel(nn.Module):
+class cnn(nn.Module):
     def __init__(self):
-        super(MyModel, self).__init__()
-        #############################################################################
-        # TODO: Initialize the network weights                                      #
-        #############################################################################
+        super(cnn, self).__init__()
         # conv layer
-        # input size is defined using hardcode: piazza @195_18
         C, H, W = 3, 32, 32
         # my configuration
         '''
@@ -41,15 +37,9 @@ class MyModel(nn.Module):
         self.dropout3 = nn.Dropout(p=0.1)
         self.fc3 = nn.Linear(512, 10)
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
 
     def forward(self, x):
         outs = None
-        #############################################################################
-        # TODO: Implement forward pass of the network                               #
-        #############################################################################
         #(N, C, H, W) = x.shape
         #print(C, H, W)
         # conv layer 1
@@ -84,7 +74,4 @@ class MyModel(nn.Module):
         x = self.dropout3(x)
         outs = self.fc3(x)
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
         return outs

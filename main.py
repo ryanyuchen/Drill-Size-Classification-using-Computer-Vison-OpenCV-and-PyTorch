@@ -6,7 +6,8 @@ Created on Sat Nov 12 16:40:55 2022
 """
 
 from utils import get_video_files, extract_images_from_video, create_dataset, plot_image
-
+from models import cnn
+from loss import FocalLoss, reweight
 
 def main():
     # extra image from video and split into train and test

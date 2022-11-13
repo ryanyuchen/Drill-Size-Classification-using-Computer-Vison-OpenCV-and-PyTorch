@@ -25,18 +25,12 @@ def reweight(cls_num_list, beta=0.9999):
     :return:
     '''
     per_cls_weights = None
-    #############################################################################
-    # TODO: reweight each class by effective numbers                            #
-    #############################################################################
     # Reference: https://github.com/kaidic/LDAM-DRW/blob/master/cifar_train.py
     effective_num = 1.0 - np.power(beta, cls_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
     per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(cls_num_list)
     per_cls_weights = torch.FloatTensor(per_cls_weights)
 
-    #############################################################################
-    #                              END OF YOUR CODE                             #
-    #############################################################################
     return per_cls_weights
 
 
@@ -55,16 +49,10 @@ class FocalLoss(nn.Module):
         :return: tensor of focal loss in scalar
         '''
         loss = None
-        #############################################################################
-        # TODO: Implement forward pass of the focal loss                            #
-        #############################################################################
         # Reference: https://github.com/kaidic/LDAM-DRW/blob/3193f05c1e6e8c4798c5419e97c5a479d991e3e9/losses.py#L13
         ce_inputs = F.cross_entropy(input, target, reduction='none', weight=self.weight)
         p = torch.exp(-ce_inputs)
         loss_array = (1 - p) ** self.gamma * ce_inputs
         loss = loss_array.mean()
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
         return loss
