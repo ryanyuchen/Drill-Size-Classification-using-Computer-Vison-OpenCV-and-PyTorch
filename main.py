@@ -74,7 +74,6 @@ def main():
     print('Best Prec @1 Acccuracy: {:.4f}'.format(best))
     
     
-    
 class CreateDataset(Dataset):
     def __init__(self, images, labels):
         # Add a transform here
@@ -86,7 +85,6 @@ class CreateDataset(Dataset):
 
     def __len__ (self):
         return len(self.images)
-     
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""

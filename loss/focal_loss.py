@@ -3,16 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-def reweight(cls_num_list, beta=0.9999):
-    per_cls_weights = None
-    effective_num = 1.0 - np.power(beta, cls_num_list)
-    per_cls_weights = (1.0 - beta) / np.array(effective_num)
-    per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(cls_num_list)
-    per_cls_weights = torch.FloatTensor(per_cls_weights)
-
-    return per_cls_weights
-
-
 class FocalLoss(nn.Module):
     def __init__(self, weight=None, gamma=0.):
         super(FocalLoss, self).__init__()

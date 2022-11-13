@@ -32,6 +32,7 @@ The ML model used to classify the drill size is developed using Python, OpenCV a
 - A CNN model is developed and stored in the dirctory of `model` and the configuration is as follows: Image Data -> Conv Layer 1 (3, 16, 3, 1, 1) -> Batch Norm -> ReLU -> Conv Layer 2 (16, 32, 3, 1, 1) -> Batch Norm -> ReLU -> Max Pooling (2, 2, 0) -> Conv Layer 3 (32, 64, 3, 1, 1) -> Batch Norm -> ReLU -> Max Pooling (2, 2, 0) -> Dropout 1 (p=0.05) -> Conv Layer 4 (64, 128, 3, 1, 1) -> Batch Norm -> ReLU -> Max Pooling (2, 2, 0) -> Dropout (p=0.1) -> FC Layer 1 (2048, 1024) -> ReLU -> FC Layer 2 (1024, 512) -> ReLU -> Dropout 3 (p=0.1) -> FC Layer 3 (512, 10) -> Output.
 - Optimizer is set to Adam
 - Criterion initially uses `Cross-Entropy` and another loss fuction of `Focal-Loss` is developed and placed in the directory of `loss`
+- In each epoch, the model is trained and validate and the best accuracy is used to evalute the model
 
 ## Future Improvement
 
