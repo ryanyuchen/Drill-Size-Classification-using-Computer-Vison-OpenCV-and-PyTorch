@@ -7,11 +7,6 @@ class cnn(nn.Module):
         # conv layer
         C, H, W = 3, 32, 32
         # my configuration
-        '''
-        Reference: 
-            https://www.kaggle.com/vikasbhadoria/cifar10-high-accuracy-model-build-on-pytorch
-            https://zhenye-na.github.io/2018/09/28/pytorch-cnn-cifar10.html
-        '''
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
         
@@ -35,7 +30,7 @@ class cnn(nn.Module):
         self.fc1 = nn.Linear(4*4*128, 1024)
         self.fc2 = nn.Linear(1024, 512)
         self.dropout3 = nn.Dropout(p=0.1)
-        self.fc3 = nn.Linear(512, 10)
+        self.fc3 = nn.Linear(512, 9)
 
 
     def forward(self, x):

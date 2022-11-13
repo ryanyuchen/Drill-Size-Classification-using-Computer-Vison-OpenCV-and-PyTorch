@@ -71,7 +71,7 @@ def create_dataset(directory, h, w):
         img_data.append(image)
         class_name.append(file[0:5])
         
-        return img_data, class_name
+    return img_data, class_name
     
 def plot_image(image):
     f, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, sharey=True)
